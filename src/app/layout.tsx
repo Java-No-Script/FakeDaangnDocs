@@ -3,19 +3,15 @@ import { Banner, Head } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
 import "nextra-theme-docs/style.css";
 
-export const metadata = {
-  // Define your metadata here
-  // For more information on metadata API, see: https://nextjs.org/docs/app/building-your-application/optimizing/metadata
-};
+export const metadata = {};
 
-const banner = <Banner storageKey="some-key">Nextra 4.0 is released 🎉</Banner>;
-const navbar = (
-  <Navbar
-    logo={<b>Nextra</b>}
-    // ... Your additional navbar options
-  />
+const banner = (
+  <Banner storageKey="some-key">
+    당근 커뮤니티에 입사하신 것을 환영합니다 🎉
+  </Banner>
 );
-const footer = <Footer>MIT {new Date().getFullYear()} © Nextra.</Footer>;
+const navbar = <Navbar logo={<b>🥕 당근 커뮤니티</b>} />;
+const footer = <Footer>MIT {new Date().getFullYear()} © 당근 커뮤니티.</Footer>;
 
 export default async function RootLayout({
   children,
@@ -23,19 +19,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      // Not required, but good for SEO
-      lang="en"
-      // Required to be set
-      dir="ltr"
-      // Suggested by `next-themes` package https://github.com/pacocoursey/next-themes#with-app
-      suppressHydrationWarning
-    >
-      <Head
-      // ... Your additional head options
-      >
-        {/* Your additional tags should be passed as `children` of `<Head>` element */}
-      </Head>
+    <html lang="ko" dir="ltr" suppressHydrationWarning>
+      <Head></Head>
       <body>
         <Layout
           banner={banner}
@@ -43,7 +28,11 @@ export default async function RootLayout({
           pageMap={await getPageMap()}
           docsRepositoryBase="https://github.com/shuding/nextra/tree/main/docs"
           footer={footer}
-          // ... Your additional layout options
+          themeSwitch={{
+            dark: "dark",
+            light: "light",
+            system: "system",
+          }}
         >
           {children}
         </Layout>
