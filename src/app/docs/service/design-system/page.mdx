@@ -4,7 +4,7 @@ asIndexPage: true
 description: Seed Design System(가칭)은 일관된 사용자 경험을 제공하기 위한 디자인 언어와 컴포넌트, 토큰, 가이드의 집합입니다.
 ---
 
-import { Callout, Cards, Steps, Tabs } from "nextra/components";
+import { Callout, Cards, Steps, Tabs, Table } from "nextra/components";
 
 # Seed Design System
 
@@ -35,8 +35,49 @@ fix = patch, non‑breaking feature = minor, breaking = major
 
 </Steps>
 
-## 로드맵(요약)
+## 25년 로드맵
 
-- 토큰: 색상 대비 자동 점검 파이프라인 도입
-- 컴포넌트: Table, DatePicker, Tooltip 고도화
-- 가이드: 접근성/국제화(i18n)/모션 가이드 추가
+<Table>
+  <thead>
+    <Table.Tr>
+      <Table.Th>항목</Table.Th>
+      <Table.Th>목표 분기</Table.Th>
+      <Table.Th>상태</Table.Th>
+      <Table.Th>메모</Table.Th>
+    </Table.Tr>
+  </thead>
+  <tbody>
+    <Table.Tr>
+      <Table.Td>토큰: 색상 대비 자동 점검</Table.Td>
+      <Table.Td>2025 Q2</Table.Td>
+      <Table.Td>In Progress</Table.Td>
+      <Table.Td>CI에 contrast 검사 도입, 실패 시 경고/차단 옵션 실험.</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>접근성 가이드/체크리스트</Table.Td>
+      <Table.Td>2025 Q3</Table.Td>
+      <Table.Td>Planned</Table.Td>
+      <Table.Td>
+        팀에서도 문제 인지. 명도 대비/포커스/키보드 항목을 중심으로 보강 예정.
+      </Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>가이드: i18n/모션</Table.Td>
+      <Table.Td>2025 Q3</Table.Td>
+      <Table.Td>Planned</Table.Td>
+      <Table.Td>
+        숫자/날짜/단위 로컬라이제이션 & 모션 강도/속도 가이드 추가.
+      </Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>컴포넌트: Table/DatePicker/Tooltip</Table.Td>
+      <Table.Td>2025 Q4</Table.Td>
+      <Table.Td>Backlog</Table.Td>
+      <Table.Td>가상 스크롤/가용성(모바일)/포커스 트랩 개선 포함.</Table.Td>
+    </Table.Tr>
+  </tbody>
+</Table>
+
+<Callout type="info" emoji="🗓️">
+  상황에 따라 일정은 조정될 수 있습니다. 변경 시 변경 로그와 함께 공지합니다.
+</Callout>
