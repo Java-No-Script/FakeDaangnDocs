@@ -1,0 +1,64 @@
+---
+title: 토큰
+---
+
+import { Table, Callout } from "nextra/components";
+
+# 디자인 토큰
+
+디자인 토큰은 제품 전반의 시각 언어를 코드로 표현한 최소 단위의 값입니다.
+
+## 범주
+
+- 컬러: `--color-bg`, `--color-fg`, `--color-primary` 등
+- 타이포: `--font-size-sm/md/lg`, `--line-height-base`
+- 스페이싱: `--space-2/4/8/12/16` 등 규칙적 간격 스케일
+- 라운드/보더: `--radius-sm/md/lg`, `--border-1`
+- 그림자: `--shadow-sm/md/lg`
+
+## 샘플 표
+
+<Table>
+  <thead>
+    <Table.Tr>
+      <Table.Th>토큰</Table.Th>
+      <Table.Th>예시 값</Table.Th>
+      <Table.Th>용도</Table.Th>
+    </Table.Tr>
+  </thead>
+  <tbody>
+    <Table.Tr>
+      <Table.Td>--color-primary</Table.Td>
+      <Table.Td>#FF6F0F</Table.Td>
+      <Table.Td>강조 색상</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>--space-8</Table.Td>
+      <Table.Td>8px</Table.Td>
+      <Table.Td>카드/리스트 간격</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>--radius-md</Table.Td>
+      <Table.Td>8px</Table.Td>
+      <Table.Td>버튼/카드 라운드</Table.Td>
+    </Table.Tr>
+  </tbody>
+</Table>
+
+## 사용 예시
+
+```css
+:root {
+  --color-primary: #ff6f0f;
+  --space-8: 8px;
+}
+.button-primary {
+  background: var(--color-primary);
+  padding: var(--space-8) var(--space-8);
+  border-radius: 8px;
+}
+```
+
+<Callout type="info" emoji="🧩">
+  토큰 변경은 전체 제품에 파급되므로, 변경 전 영향 범위를 반드시 검토하세요.
+</Callout>

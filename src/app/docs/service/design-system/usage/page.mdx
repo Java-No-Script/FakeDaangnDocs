@@ -1,0 +1,48 @@
+---
+title: 사용 가이드
+---
+
+import { Callout, Steps } from "nextra/components";
+
+# 사용 가이드
+
+디자인 시스템을 프로젝트에 적용하는 방법을 설명합니다.
+
+## 설치/연결
+
+```bash
+# 예시
+npm i @seed-design/tokens @seed-design/components
+```
+
+```ts
+// 글로벌 스타일(예)
+import "@seed-design/tokens/styles.css";
+```
+
+## 적용 순서
+
+<Steps>
+### 토큰 연결
+
+컬러/타이포/스페이싱 CSS 변수를 전역에 주입합니다.
+
+### 컴포넌트 임포트
+
+트리셰이킹 가능한 임포트 패턴을 정립합니다.
+
+### 접근성 점검
+
+포커스/키보드/명도 대비를 자동화로 점검합니다.
+
+</Steps>
+
+<Callout emoji="🧭">
+  팀 내 샌드박스(Storybook/Playroom 등)을 유지해 컴포넌트 사용 예를 공유하세요.
+</Callout>
+
+## 베스트 프랙티스
+
+- 토큰 변경은 PR로 공유하여 영향 범위를 투명하게
+- 컴포넌트 사용 예시는 스토리/샌드박스로 확인 가능하게
+- 린트/테스트에서 접근성 규칙을 자동 점검

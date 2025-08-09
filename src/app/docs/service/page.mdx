@@ -1,0 +1,51 @@
+---
+title: 서비스
+---
+
+import { Table, Callout } from "nextra/components";
+
+# 서비스 개요
+
+## 디자인 시스템(Seed Design)
+
+<Callout emoji="🌱">
+  Seed Design은 당근의 디자인 시스템으로, 일관된 UX를 위한
+  토큰·컴포넌트·가이드를 제공합니다.
+</Callout>
+
+<Table>
+  <thead>
+    <Table.Tr>
+      <Table.Th>영역</Table.Th>
+      <Table.Th>핵심</Table.Th>
+      <Table.Th>비고</Table.Th>
+    </Table.Tr>
+  </thead>
+  <tbody>
+    <Table.Tr>
+      <Table.Td>토큰</Table.Td>
+      <Table.Td>컬러/타이포/스페이싱/라운드/그림자</Table.Td>
+      <Table.Td>글로벌 CSS 변수 기반, 브랜드 확장/다크모드 대응</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>컴포넌트</Table.Td>
+      <Table.Td>Button/Input/Modal/Tabs 등</Table.Td>
+      <Table.Td>접근성(A11y) 기본값 포함, 변형·상태 문서화</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>가이드</Table.Td>
+      <Table.Td>원칙/사용/기여/모션/국제화</Table.Td>
+      <Table.Td>팀간 합의된 의사결정 기준 제공</Table.Td>
+    </Table.Tr>
+  </tbody>
+</Table>
+
+## 스택 플로우(예시)
+
+- 디자인 → 토큰 정의 → 컴포넌트 구현 → 문서/데모 → 배포 → 소비(제품)
+- 변경은 PR로 제안하고, 영향 범위/마이그레이션 가이드를 함께 제공합니다.
+
+<Callout type="info" emoji="🧭">
+  자세한 내용은 좌측 바의 디자인 시스템 문서에서 원칙·토큰·컴포넌트를 순서대로
+  확인하세요.
+</Callout>

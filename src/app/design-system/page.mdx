@@ -1,0 +1,58 @@
+---
+title: 디자인 시스템
+asIndexPage: true
+description: Seed Design System(가칭)은 일관된 사용자 경험을 제공하기 위한 디자인 언어와 컴포넌트, 토큰, 가이드의 집합입니다.
+---
+
+import { Callout, Cards, Steps, Tabs } from "nextra/components";
+
+# Seed Design System
+
+<Callout emoji="🌱">
+  브랜드 아이덴티티를 유지하면서도, 빠르고 예측 가능한 UI 제작을 돕습니다.
+</Callout>
+
+<Cards num={3}>
+  <Cards.Card href="/design-system/principles" icon="📐" title="원칙" />
+  <Cards.Card href="/design-system/tokens" icon="🎨" title="토큰" />
+  <Cards.Card href="/design-system/components" icon="🧱" title="컴포넌트" />
+</Cards>
+
+## 철학 요약
+
+<Tabs items={["명확성", "일관성", "접근성", "확장성"]}>
+  <div>대비·간격·계층을 통해 누구나 빠르게 이해할 수 있는 UI를 지향합니다.</div>
+  <div>패턴·명명·상호작용을 통일하여 학습 비용을 최소화합니다.</div>
+  <div>
+    명도 대비, 키보드 내비게이션, 스크린리더 친화적 마크업을 기본값으로
+    채택합니다.
+  </div>
+  <div>
+    토큰 중심 설계로 다크모드/브랜드 확장/신규 제품 요구에 유연하게 대응합니다.
+  </div>
+</Tabs>
+
+## 버전 · 릴리스
+
+<Steps>
+  <Steps.Step title="버전 정책(SemVer)">
+    fix = patch, non‑breaking feature = minor, breaking = major
+  </Steps.Step>
+  <Steps.Step title="변경 로그">
+    모든 변경은 문서/마이그레이션 가이드를 포함합니다.
+  </Steps.Step>
+  <Steps.Step title="릴리스 주기">
+    주 1회 정기 릴리스, 긴급 수정은 hotfix로 별도 배포합니다.
+  </Steps.Step>
+</Steps>
+
+## 로드맵(요약)
+
+- 토큰: 색상 대비 자동 점검 파이프라인 도입
+- 컴포넌트: Table, DatePicker, Tooltip 고도화
+- 가이드: 접근성/국제화(i18n)/모션 가이드 추가
+
+## 시작하기
+
+- 사용 가이드: [/design-system/usage](/design-system/usage)
+- 기여 가이드: [/design-system/contribution](/design-system/contribution)

@@ -1,0 +1,54 @@
+---
+title: 기여
+---
+
+import { Callout, Table } from "nextra/components";
+
+# 기여 가이드
+
+디자인 시스템은 협업으로 성장합니다. 아래 원칙을 따릅니다.
+
+## 워크플로우
+
+1. 이슈 등록: 문제/제안 배경과 사용 맥락 설명
+2. 디자인 제안: 원칙/토큰 영향도/대안 비교 포함
+3. 구현/리뷰: 컴포넌트 API·문서·데모 포함 PR
+4. 배포/공지: 변경 로그와 마이그레이션 가이드 제공
+
+## 품질 기준
+
+- 접근성: 명도 대비, 포커스 표시, 키보드 네비게이션
+- 문서화: 예제·코드 샘플·스크린샷/애니메이션
+- 테스트: 스냅샷·상태/상호작용 단위 테스트
+
+## PR 체크리스트(예시)
+
+<Table>
+  <tbody>
+    <Table.Tr>
+      <Table.Td>[ ] 토큰/컴포넌트 변경 영향 범위 설명</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>[ ] 접근성 점검 결과(대비/포커스/키보드)</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>[ ] 문서/스토리/샌드박스 업데이트</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>[ ] 마이그레이션 가이드(필요 시)</Table.Td>
+    </Table.Tr>
+  </tbody>
+</Table>
+
+## 커밋 메시지 규칙(예시)
+
+```text
+feat(tokens): add surface/elevation scale
+fix(button): focus ring color contrast
+docs(components): add usage examples for Modal
+chore(release): 1.4.0
+```
+
+<Callout type="info" emoji="🧭">
+  모든 변경은 재사용성과 일관성에 긍정적으로 기여해야 합니다.
+</Callout>{" "}

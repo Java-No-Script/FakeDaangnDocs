@@ -1,0 +1,187 @@
+---
+title: Input
+---
+
+import { Callout, Table, Tabs } from "nextra/components";
+
+# Input
+
+<Callout emoji="⌨️">
+  문자 입력 필드입니다. `label`, `helpText`, `errorText`로 사용성을 높입니다.
+</Callout>
+
+## 빠른 시작
+
+```tsx
+import { Input } from "@/components";
+
+export default function Example() {
+  return (
+    <>
+      <Input
+        id="name"
+        label="이름"
+        placeholder="성함을 입력하세요"
+        helpText="실명 기준"
+      />
+      <Input
+        id="email"
+        label="이메일"
+        type="email"
+        errorText="형식을 확인해 주세요"
+      />
+      <Input id="nick" label="닉네임" size="sm" placeholder="2~12자" />
+    </>
+  );
+}
+```
+
+## Props
+
+<Table>
+  <thead>
+    <Table.Tr>
+      <Table.Th>Prop</Table.Th>
+      <Table.Th>Type</Table.Th>
+      <Table.Th>Default</Table.Th>
+      <Table.Th>Description</Table.Th>
+    </Table.Tr>
+  </thead>
+  <tbody>
+    <Table.Tr>
+      <Table.Td>label</Table.Td>
+      <Table.Td>string</Table.Td>
+      <Table.Td>-</Table.Td>
+      <Table.Td>입력 필드의 레이블. 클릭 시 입력으로 포커스 이동.</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>helpText</Table.Td>
+      <Table.Td>string</Table.Td>
+      <Table.Td>-</Table.Td>
+      <Table.Td>보조 설명. 포맷/예시/주의 등.</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>errorText</Table.Td>
+      <Table.Td>string</Table.Td>
+      <Table.Td>-</Table.Td>
+      <Table.Td>
+        오류 설명. 제공 시 `aria-invalid`/`aria-describedby`가 설정됩니다.
+      </Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>size</Table.Td>
+      <Table.Td>"sm" | "md" | "lg"</Table.Td>
+      <Table.Td>"md"</Table.Td>
+      <Table.Td>필드의 높이/폰트/패딩 스케일.</Table.Td>
+    </Table.Tr>
+  </tbody>
+</Table>
+
+## 사용 방법
+
+### 이벤트를 주는 방법(Controlled)
+
+```tsx
+import { useState } from "react";
+import { Input } from "@/components";
+
+export default function Controlled() {
+  const [value, setValue] = useState("");
+  return (
+    <Input
+      id="title"
+      label="제목"
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+    />
+  );
+}
+```
+
+### 유효성 검사(즉시/블러/서버)
+
+```tsx
+// 즉시 검증 (길이)
+const [v, setV] = useState('')
+const error = v.length < 2 ? '2자 이상 입력하세요' : undefined
+<Input id="nick" label="닉네임" value={v} onChange={(e)=>setV(e.target.value)} errorText={error} />
+```
+
+```tsx
+// 블러 시 검증
+const [error, setError] = useState<string | undefined>()
+<Input id="email" label="이메일" onBlur={(e)=> setError(/@/.test(e.target.value) ? undefined : '형식을 확인해 주세요')} errorText={error} />
+```
+
+```tsx
+// 서버 검증 (중복 확인 예시)
+const [error, setError] = useState<string | undefined>();
+const onBlur = async (e: React.FocusEvent<HTMLInputElement>) => {
+  const ok = await fetch(
+    `/api/check?nick=${encodeURIComponent(e.target.value)}`
+  ).then((r) => r.ok);
+  setError(ok ? undefined : "이미 사용 중입니다");
+};
+<Input id="nick" label="닉네임" onBlur={onBlur} errorText={error} />;
+```
+
+### 테마/상태 색 변경
+
+- 전역 CSS 변수로 상태 테마를 조정할 수 있습니다(예: 에러 테두리 색).
+
+```css
+:root {
+  --color-primary: #ff6f0f;
+}
+/* 영역 한정 테마 */
+[data-theme="brandB"] {
+  --color-primary: #0a84ff;
+}
+```
+
+```tsx
+<div data-theme="brandB">
+  <Input id="name" label="이름" />
+</div>
+```
+
+## 예시
+
+<Tabs items={["Label", "Help/Error", "Size"]}>
+  <Tabs.Tab>
+    ```tsx
+    <Input id="username" label="아이디" placeholder="아이디" />
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```tsx
+    <Input
+      id="phone"
+      label="휴대폰"
+      placeholder="010-0000-0000"
+      helpText="숫자만 입력"
+    />
+    ```
+    <div style={{ height: 8 }} />
+    ```tsx
+    <Input
+      id="code"
+      label="인증코드"
+      placeholder="6자리"
+      errorText="만료된 코드입니다"
+    />
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```tsx
+    <Input id="small" label="작게" size="sm" />
+    <div style={{ height: 8 }} />
+    <Input id="large" label="크게" size="lg" />
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+<Callout type="info" emoji="✅">
+  레이블은 필수, 에러에는 해결 방법을 포함, 입력 타입으로 모바일 키패드를
+  최적화하세요.
+</Callout>

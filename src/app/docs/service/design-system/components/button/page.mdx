@@ -1,0 +1,189 @@
+---
+title: Button
+---
+
+import { Callout, Table, Tabs } from "nextra/components";
+
+# Button
+
+<Callout emoji="🔘">
+  행동(액션)을 트리거하는 기본 컴포넌트입니다. `variant`와 `size`로 일관된
+  스타일을 제공합니다.
+</Callout>
+
+## 빠른 시작
+
+```tsx
+import { Button } from "@/components";
+
+export default function Example() {
+  return (
+    <>
+      <Button variant="primary">저장</Button>
+      <Button variant="secondary" size="sm">
+        취소
+      </Button>
+      <Button variant="text" size="lg" disabled>
+        불가
+      </Button>
+    </>
+  );
+}
+```
+
+## Props
+
+<Table>
+  <thead>
+    <Table.Tr>
+      <Table.Th>Prop</Table.Th>
+      <Table.Th>Type</Table.Th>
+      <Table.Th>Default</Table.Th>
+      <Table.Th>Description</Table.Th>
+    </Table.Tr>
+  </thead>
+  <tbody>
+    <Table.Tr>
+      <Table.Td>variant</Table.Td>
+      <Table.Td>"primary" | "secondary" | "text"</Table.Td>
+      <Table.Td>"primary"</Table.Td>
+      <Table.Td>버튼의 시각적 톤.</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>size</Table.Td>
+      <Table.Td>"sm" | "md" | "lg"</Table.Td>
+      <Table.Td>"md"</Table.Td>
+      <Table.Td>높이/폰트/패딩 스케일.</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>disabled</Table.Td>
+      <Table.Td>boolean</Table.Td>
+      <Table.Td>false</Table.Td>
+      <Table.Td>상호작용 차단 상태.</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>onClick</Table.Td>
+      <Table.Td>() => void</Table.Td>
+      <Table.Td>-</Table.Td>
+      <Table.Td>클릭 핸들러.</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>children</Table.Td>
+      <Table.Td>ReactNode</Table.Td>
+      <Table.Td>-</Table.Td>
+      <Table.Td>라벨/아이콘 콘텐츠.</Table.Td>
+    </Table.Tr>
+  </tbody>
+</Table>
+
+## 사용 방법
+
+### 이벤트를 주는 방법
+
+```tsx
+import { Button } from "@/components";
+
+function SaveButton() {
+  const handleSave = async () => {
+    // 비동기 처리 예시
+    await submitForm();
+  };
+  return <Button onClick={handleSave}>저장</Button>;
+}
+```
+
+- 비동기 작업 동안 중복 클릭을 막고 싶다면 상태로 `disabled`를 제어하세요.
+
+```tsx
+const [loading, setLoading] = useState(false);
+const onClick = async () => {
+  setLoading(true);
+  try {
+    await run();
+  } finally {
+    setLoading(false);
+  }
+};
+<Button onClick={onClick} disabled={loading}>
+  {loading ? "처리 중…" : "저장"}
+</Button>;
+```
+
+### 사이즈를 변경하는 방법
+
+```tsx
+<Button size="sm">작게</Button>
+<Button size="md">보통</Button>
+<Button size="lg">크게</Button>
+```
+
+- `sm`는 보조 UI, `md`는 기본, `lg`는 모바일 주 액션/히어로 등에 권장.
+
+### 테마를 변경하는 방법
+
+- 전역 CSS 변수로 브랜드 색을 바꿀 수 있습니다. 이 컴포넌트는 `--color-primary`를 사용합니다.
+
+```css
+:root {
+  --color-primary: #ff6f0f;
+} /* 기본값 */
+/* 다크/브랜드 테마 예시 */
+[data-theme="brandB"] {
+  --color-primary: #0a84ff;
+}
+```
+
+```tsx
+// 특정 영역만 바꾸고 싶다면 래퍼에 data-theme를 부여
+<div data-theme="brandB">
+  <Button>브랜드 B 색상</Button>
+</div>
+```
+
+- 개별 버튼만 미세 조정이 필요하면 `style`로 보더/배경을 덮어쓸 수 있습니다.
+
+```tsx
+<Button style={{ background: "#222", color: "#fff", borderColor: "#222" }}>
+  커스텀
+</Button>
+```
+
+## 예시
+
+<Tabs items={["Variant", "Size", "Disabled"]}>
+  <Tabs.Tab>
+    ```tsx
+    <Button variant="primary">기본</Button>
+    <Button variant="secondary" style={{ marginLeft: 8 }}>
+      보조
+    </Button>
+    <Button variant="text" style={{ marginLeft: 8 }}>
+      텍스트
+    </Button>
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```tsx
+    <Button size="sm">작게</Button>
+    <Button size="md" style={{ marginLeft: 8 }}>
+      보통
+    </Button>
+    <Button size="lg" style={{ marginLeft: 8 }}>
+      크게
+    </Button>
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```tsx
+    <Button disabled>Disabled</Button>
+    <Button variant="secondary" disabled style={{ marginLeft: 8 }}>
+      Disabled
+    </Button>
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+<Callout type="info" emoji="✅">
+  라벨은 동사형(예: "저장"). 주요 화면에는 primary는 1개만. 포커스는 항상
+  보이도록 유지하세요.
+</Callout>
