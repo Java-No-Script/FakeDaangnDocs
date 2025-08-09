@@ -1,9 +1,0 @@
-export default {
-  "*": { type: "page" },
-  index: { title: "홈", display: "hidden" },
-  docs: { title: "문서" },
-  company: { title: "회사소개" },
-  service: { title: "서비스" },
-  culture: { title: "팀문화" },
-  blog: { title: "블로그" },
-};
