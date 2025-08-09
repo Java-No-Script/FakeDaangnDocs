@@ -1,0 +1,50 @@
+---
+title: 예제
+---
+
+import { Callout } from "nextra/components";
+
+# 예제 모음
+
+## Q. 상세에서 결제 완료 후 목록까지 한 번에 돌아가고 싶어요
+
+결제 화면까지 갔다가, 완료와 함께 “두 단계” 뒤로 돌아가고 싶은 경우예요. 결제 완료 콜백에서 연속 pop이 가장 단순합니다.
+
+```tsx
+// 상세 → 결제 → 완료 후 목록으로 복귀
+nav.push("Payment");
+// 완료 콜백에서 2단계 pop
+nav.pop(); // Payment → Detail
+nav.pop(); // Detail → List
+```
+
+<Callout type="info" emoji="💡">
+  중간 화면 상태를 보존해야 한다면 pop 대신 replace를 검토해 보세요.
+</Callout>
+
+## Q. 특정 조건에서 뒤로가기를 막고 안내만 하고 싶어요
+
+폼이 미저장일 때 바로 이탈되면 당황스러워요. 간단한 가드로 한 번 더 묻는 경험을 줄 수 있어요.
+
+```tsx
+useBeforePop(() => {
+  if (!canLeave) {
+    toast("작업을 저장해 주세요");
+    return false;
+  }
+  return true;
+});
+```
+
+<Callout type="warning" emoji="⚠️">
+  가드는 남발하지 않는 게 좋아요. 꼭 필요한 지점(데이터 손실 가능성)에만 씁니다.
+</Callout>
+
+## Q. 동일 화면을 여러 번 스택에 쌓아도 되나요?
+
+가능해요. 다만 의도치 않은 중복을 막고 싶다면 `key`/`params`로 구분하거나, 동일 파라미터로의 연속 push를 제한하는 정책을 두면 좋아요.
+
+<Callout emoji="📌">
+  `nav.push('Detail', {id})` 전에 현재 top이 같은 화면/파라미터인지 확인하는
+  헬퍼를 두면 실수를 줄일 수 있어요.
+</Callout>

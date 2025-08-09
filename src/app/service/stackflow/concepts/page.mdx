@@ -1,0 +1,48 @@
+---
+title: 개념
+---
+
+import { Callout, Table } from "nextra/components";
+
+# 핵심 개념
+
+<Callout emoji="🧩">
+  스택플로우는 화면을 스택으로 쌓고(pop/push) 관리합니다. 각 화면은 고유 키와
+  파라미터를 가질 수 있습니다.
+</Callout>
+
+## 용어
+
+<br />
+
+<Table>
+  <thead>
+    <Table.Tr>
+      <Table.Th>용어</Table.Th>
+      <Table.Th>설명</Table.Th>
+    </Table.Tr>
+  </thead>
+  <tbody>
+    <Table.Tr>
+      <Table.Td>Stack</Table.Td>
+      <Table.Td>화면들의 LIFO 구조. push/pop으로 관리</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>Screen</Table.Td>
+      <Table.Td>하나의 뷰. `key`/`params`를 가질 수 있음</Table.Td>
+    </Table.Tr>
+    <Table.Tr>
+      <Table.Td>Navigator</Table.Td>
+      <Table.Td>스택을 제어하는 인터페이스(푸시/팝/리플레이스)</Table.Td>
+    </Table.Tr>
+  </tbody>
+</Table>
+
+## 흐름(예시)
+
+```md
+- 홈 → 상품 상세(push)
+- 상세 → 결제 모달(push)
+- 결제 완료 → 상세(pop)
+- 상세 → 홈(pop)
+```

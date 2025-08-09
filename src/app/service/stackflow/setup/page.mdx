@@ -1,0 +1,42 @@
+---
+title: 세팅
+---
+
+import { Steps, Callout } from "nextra/components";
+
+# 세팅
+
+<Callout emoji="⚙️">몇 단계만으로 기본 흐름을 구성할 수 있습니다.</Callout>
+
+## 설치
+
+```bash
+npm i @stackflow/core @stackflow/react
+```
+
+## 초기화
+
+```tsx
+import { createStackflow } from "@stackflow/react";
+
+const { Stack, useNavigator } = createStackflow({
+  screens: {
+    Home: () => <div>Home</div>,
+    Detail: () => <div>Detail</div>,
+  },
+});
+```
+
+## 사용(푸시/팝)
+
+```tsx
+function HomeScreen() {
+  const nav = useNavigator();
+  return <button onClick={() => nav.push("Detail", { id: 1 })}>상세</button>;
+}
+```
+
+<Callout type="info" emoji="🧭">
+  Next.js 라우터와 함께 사용할 때는 `app` 라우트에서 `Stack`을 루트에
+  배치하세요.
+</Callout>{" "}

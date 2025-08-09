@@ -1,0 +1,60 @@
+---
+title: 스택플로우
+asIndexPage: true
+description: 스택플로우는 누구나 쉽게 웹뷰 기반 화면 전환/스택 네비게이션을 구성할 수 있도록 돕는 프레임워크입니다.
+---
+
+import { Callout, Cards, Steps, Tabs } from "nextra/components";
+
+# 스택플로우
+
+<Callout emoji="🧭">
+  단순한 API로 복잡한 화면 전환 흐름을 안전하게 관리합니다.
+</Callout>
+
+<Cards num={3}>
+  <Cards.Card href="/service/stackflow/concepts" icon="🧩" title="개념" />
+  <Cards.Card href="/service/stackflow/setup" icon="⚙️" title="세팅" />
+  <Cards.Card href="/service/stackflow/patterns" icon="📚" title="패턴" />
+</Cards>
+
+## 왜 써요?
+
+- **코드가 짧아져요**: 화면 전환/뒤로가기를 직접 관리하지 않아도 돼요.
+- **안전해요**: 예외 흐름(중첩 네비, 모달, 가드)을 일관된 방식으로 다룰 수 있어요.
+- **확장돼요**: 프로젝트마다 필요한 미들웨어/플러그인을 얹기 쉬워요.
+
+## 무엇이 달라지나요
+
+<Tabs items={["단순화", "안전성", "확장성"]}>
+  <Tabs.Tab>라우팅/스택 관리가 코드 몇 줄로 단순해집니다.</Tabs.Tab>
+  <Tabs.Tab>뒤로가기/중첩 네비 등 예외 케이스를 안전하게 처리합니다.</Tabs.Tab>
+  <Tabs.Tab>모듈 구조로 앱별 플러그인/미들웨어 확장이 쉽습니다.</Tabs.Tab>
+</Tabs>
+
+## 시작하기
+
+<Steps>
+
+### 설치
+
+패키지를 설치하고 프로젝트에 연결해요.
+
+```bash
+npm i @stackflow/core @stackflow/react
+```
+
+### 기본 흐름 구현
+
+화면을 정의하고, 스택에 푸시/팝해 보세요.
+
+### 패턴 적용
+
+중첩 스택/모달/가드 등 현실 패턴을 조합해요.
+
+</Steps>
+
+<Callout type="info" emoji="💡">
+  막히면 “화면은 스택에 쌓이고, nav.push/pop으로 움직인다”라는 기본 원리부터
+  점검해 보세요.
+</Callout>
